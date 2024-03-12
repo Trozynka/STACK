@@ -1,21 +1,17 @@
-﻿#include <iostream>
+#include <iostream>
 #include <list>
 using namespace std;
 
-
 int new_int = 0;
-int vibor = 0;
-
+string choose = "0";
 
 list<int> lst{3,4,14,64};
 auto pos = lst.cbegin();
 
-
-
  void menu()
      {
      cout << endl << "Что желаете? \n 1)добавление эл-ов \n 2)удаление эл-ов \n 3)получение всех элементов \n 4)получение верхнего элемента\n 5)закрыть программу" << endl;
-         cin >> vibor;
+         cin >> choose;
      }
 
  void v_1()
@@ -30,8 +26,15 @@ auto pos = lst.cbegin();
 
  void v_2()
      {
-         lst.pop_front();
-         cout << endl << "Элемент удалён." << endl;
+         if (lst.empty())
+             {
+                cout << endl << "список пуст!" << endl;
+             }
+         else
+         {
+             lst.pop_front();
+             cout << endl << "Элемент удалён." << endl;
+         }
      }
  void v_3()
      {
@@ -52,32 +55,32 @@ auto pos = lst.cbegin();
      }
 
 
-
-
-
 int main()
 {
     setlocale(LC_ALL, "RUS");
 
-    while (vibor != 5)
+    while (choose != "5")
     {
         menu();
-        if (vibor == 1)
+
+        if (choose == "1")
             v_1();
 
-        if (vibor == 2)
+        if (choose == "2")
             v_2();
 
-        if (vibor == 3)
+        if (choose == "3")
             v_3();
 
-        if (vibor == 4)
+        if (choose == "4")
             v_4();
+
+        if (choose == "5")
+            return 0;
+
+        if (choose != "1" && choose != "2" && choose != "3" && choose != "4" && choose != "5")
+            cout << endl << "Неверный ввод!" << endl;
     }
 
-
-
     cout << endl;
-
-
 }
